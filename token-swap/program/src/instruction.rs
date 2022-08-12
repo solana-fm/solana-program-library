@@ -25,6 +25,9 @@ pub struct Initialize {
     /// swap curve info for pool, including CurveType and anything
     /// else that may be required
     pub swap_curve: SwapCurve,
+
+    pub nonce: u8
+
 }
 
 /// Swap instruction data
@@ -197,7 +200,7 @@ impl SwapInstruction {
                     let (fees, rest) = rest.split_at(Fees::LEN);
                     let fees = Fees::unpack_unchecked(fees)?;
                     let swap_curve = SwapCurve::unpack_unchecked(rest)?;
-                    Self::Initialize(Initialize { fees, swap_curve })
+                    Self::Initialize(Initialize { fees, swap_curve, nonce })
                 } else {
                     return Err(SwapError::InvalidInstruction.into());
                 }
