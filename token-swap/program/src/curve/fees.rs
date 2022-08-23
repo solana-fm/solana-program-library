@@ -11,7 +11,7 @@ use serde::Serialize;
 
 
 /// Encapsulates all fee information and calculations for swap operations
-#[derive(Serialize, Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize)]
 pub struct Fees {
     /// Trade fees are extra token amounts that are held inside the token
     /// accounts during a trade, making the value of liquidity tokens rise.
